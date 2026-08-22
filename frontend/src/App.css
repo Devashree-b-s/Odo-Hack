@@ -62,6 +62,74 @@
   gap: 25px;
   place-content: center;
   place-items: center;
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
+    :root {
+      --ink: #172b29;
+      --muted: #72827e;
+      --teal: #0d6b62;
+      --mint: #dcefe8;
+      --line: #dfe9e4;
+      --paper: #f7faf8;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+
+    .auth-shell { min-height: 100svh; display: grid; grid-template-columns: minmax(300px, 0.85fr) minmax(440px, 1.15fr); background: var(--paper); }
+    .brand-panel { position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(32px, 6vw, 84px); overflow: hidden; color: var(--white); background: var(--teal); }
+    .brand-panel::after { content: ''; position: absolute; width: 420px; height: 420px; right: -150px; bottom: -160px; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; box-shadow: 0 0 0 42px rgba(255,255,255,.06), 0 0 0 84px rgba(255,255,255,.04); }
+    .brand-mark { display: inline-grid; width: 48px; height: 48px; place-items: center; border-radius: 14px; color: var(--teal); background: #e9f7ef; font: 800 27px/1 Manrope, sans-serif; }
+    .brand-panel .brand-mark { color: var(--teal); background: var(--white); }
+    .eyebrow { margin: 0 0 14px; color: var(--teal); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .brand-panel .eyebrow { color: #a9daca; }
+    .brand-panel h1, .login-card h2, .dashboard-content h1, .dashboard-placeholder h2 { margin: 0; color: inherit; font-family: Manrope, sans-serif; line-height: 1.08; }
+    .brand-panel h1 { margin: 10px 0 18px; font-size: clamp(48px, 6vw, 78px); letter-spacing: -.06em; }
+    .brand-copy { max-width: 280px; color: #d2ece1; font-size: 18px; line-height: 1.55; }
+    .brand-footer { max-width: 180px; color: #a9daca; font-size: 13px; line-height: 1.5; }
+    .login-panel { display: grid; place-items: center; padding: 40px 7vw; }
+    .login-card { width: min(100%, 430px); }
+    .mobile-brand { display: none; align-items: center; gap: 10px; margin-bottom: 48px; color: var(--ink); font: 700 18px Manrope, sans-serif; }
+    .brand-mark.small { width: 34px; height: 34px; border-radius: 10px; font-size: 19px; }
+    .login-card h2 { max-width: 380px; color: var(--ink); font-size: clamp(30px, 4vw, 42px); letter-spacing: -.045em; }
+    .login-intro, .welcome-copy { margin: 16px 0 38px; color: var(--muted); font-size: 15px; }
+    form { display: grid; gap: 10px; }
+    label { color: var(--ink); font-size: 13px; font-weight: 700; }
+    input { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 14px 15px; outline: none; color: var(--ink); background: var(--white); transition: border-color .2s, box-shadow .2s; }
+    input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(13,107,98,.13); }
+    .field-heading { display: flex; justify-content: space-between; align-items: baseline; margin-top: 13px; }
+    .text-button { padding: 0; border: 0; color: var(--teal); background: transparent; font-size: 12px; font-weight: 700; }
+    .text-button:focus-visible, .logout-button:focus-visible, .sign-in-button:focus-visible { outline: 3px solid #8fd4bc; outline-offset: 3px; }
+    .form-message { min-height: 22px; padding-top: 5px; color: #a33333; font-size: 13px; }
+    .sign-in-button { margin-top: 8px; border: 0; border-radius: 8px; padding: 15px 18px; color: var(--white); background: var(--teal); font-weight: 700; text-align: left; transition: transform .2s, background .2s; }
+    .sign-in-button span { float: right; font-size: 19px; line-height: 15px; }
+    .sign-in-button:hover { background: #09564f; transform: translateY(-1px); }
+    .demo-note { margin-top: 30px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+
+    .dashboard-shell { min-height: 100svh; color: var(--ink); background: var(--paper); }
+    .dashboard-header { display: flex; justify-content: space-between; align-items: center; padding: 22px clamp(24px, 6vw, 84px); border-bottom: 1px solid var(--line); background: var(--white); }
+    .dashboard-brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font: 700 18px Manrope, sans-serif; }
+    .logout-button { border: 1px solid var(--line); border-radius: 7px; padding: 9px 15px; color: var(--teal); background: var(--white); font-size: 13px; font-weight: 700; }
+    .logout-button:hover { background: var(--mint); }
+    .dashboard-content { max-width: 920px; margin: 0 auto; padding: 76px 24px; }
+    .dashboard-content h1 { font-size: clamp(38px, 6vw, 64px); letter-spacing: -.06em; }
+    .welcome-copy { margin-bottom: 46px; }
+    .dashboard-placeholder { display: flex; align-items: center; gap: 20px; max-width: 650px; border: 1px solid var(--line); border-radius: 12px; padding: 28px; background: var(--white); }
+    .placeholder-icon { display: grid; width: 46px; height: 46px; flex: 0 0 auto; place-items: center; border-radius: 12px; color: var(--teal); background: var(--mint); font-size: 28px; }
+    .dashboard-placeholder h2 { color: var(--ink); font-size: 20px; }
+    .dashboard-placeholder p { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
+
+    @media (max-width: 720px) {
+      .auth-shell { display: block; }
+      .brand-panel { display: none; }
+      .login-panel { min-height: 100svh; padding: 28px 24px; }
+      .mobile-brand { display: flex; }
+      .login-intro { margin-bottom: 30px; }
+      .dashboard-content { padding-top: 52px; }
+      .dashboard-placeholder { align-items: flex-start; padding: 22px; }
+    }
   flex-grow: 1;
 
   @media (max-width: 1024px) {
