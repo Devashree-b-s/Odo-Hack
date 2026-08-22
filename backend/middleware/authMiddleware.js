@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
+const User = require("../models/User");
+const Employee = require("../models/Employee");
 
-const authenticate = (req, res, next) => {
+const authenticate = async (req, res, next) => {
     const authorization = req.headers.authorization;
     const [scheme, token] = authorization ? authorization.split(" ") : [];
 
@@ -28,9 +30,40 @@ const authenticate = (req, res, next) => {
             });
         }
 
+        const user = await User.findById(decoded.userId)
+            .select("companyId role")
+            .lean();
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid authentication token"
+            });
+        }
+
+        let employeeId = null;
+        if (user.role === "EMPLOYEE") {
+            const employee = await Employee.findOne({
+                userId: user._id,
+                companyId: user.companyId
+            })
+                .select("_id")
+                .lean();
+
+            if (!employee) {
+                return res.status(401).json({
+                    success: false,
+                    message: "Employee profile not found"
+                });
+            }
+
+            employeeId = employee._id;
+        }
+
         req.user = {
-            userId: decoded.userId,
-            role: decoded.role
+            userId: user._id,
+            employeeId,
+            companyId: user.companyId,
+            role: user.role
         };
 
         return next();
