@@ -3,19 +3,27 @@ import { AuthContext } from './AuthContext'
 import { currentUserRequest, loginRequest, logoutRequest } from '../services/authService'
 import { getAccessToken, setAccessToken } from '../services/apiClient'
 
+function normalizeUser(user) {
+  const email = user?.email || ''
+  const name = user?.name || user?.displayName || email.split('@')[0] || 'User'
+
+  return { ...user, email, name }
+}
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [ready, setReady] = useState(() => !getAccessToken())
 
   useEffect(() => {
     if (!getAccessToken()) return undefined
-    currentUserRequest().then(setUser).catch(() => setAccessToken(null)).finally(() => setReady(true))
+    currentUserRequest().then((currentUser) => setUser(normalizeUser(currentUser))).catch(() => setAccessToken(null)).finally(() => setReady(true))
   }, [])
 
   async function login(identifier, password) {
     const authenticatedUser = await loginRequest(identifier, password)
-    setUser(authenticatedUser)
-    return authenticatedUser
+    const normalizedUser = normalizeUser(authenticatedUser)
+    setUser(normalizedUser)
+    return normalizedUser
   }
 
   async function logout() {
