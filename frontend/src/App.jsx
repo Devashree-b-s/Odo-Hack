@@ -8,6 +8,7 @@ import EmployeeDetails from './pages/EmployeeDetails'
 import Employees from './pages/Employees'
 import Login from './pages/Login'
 import ModulePlaceholder from './pages/ModulePlaceholder'
+import Payroll from './pages/Payroll'
 import TimeOff from './pages/TimeOff'
 import './App.css'
 
@@ -27,6 +28,7 @@ function App() {
             </Route>
             <Route path="/attendance" element={<Attendance />} />
             <Route path="/time-off" element={<TimeOff />} />
+            <Route path="/payroll" element={<Payroll />} />
             <Route path="/profile" element={<ModulePlaceholder title="My Profile" description="Keep your personal and work details up to date." />} />
           </Route>
         </Route>

@@ -6,6 +6,7 @@ const navigation = [
   { label: 'Employees', path: '/employees', icon: '◎', roles: ['HR_ADMIN'] },
   { label: 'Attendance', path: '/attendance', icon: '◷', roles: ['HR_ADMIN', 'EMPLOYEE'] },
   { label: 'Time Off', path: '/time-off', icon: '◌', roles: ['HR_ADMIN', 'EMPLOYEE'] },
+  { label: 'Payroll', path: '/payroll', icon: '▣', roles: ['HR_ADMIN', 'EMPLOYEE'] },
   { label: 'Profile', path: '/profile', icon: '○', roles: ['HR_ADMIN', 'EMPLOYEE'] },
 ]
 
