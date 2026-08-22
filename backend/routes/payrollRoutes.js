@@ -1,4 +1,6 @@
 const express = require("express");
+const authenticate = require("../middleware/authMiddleware");
+const requireRole = require("../middleware/roleMiddleware");
 const {
     createPayroll,
     listPayroll,
@@ -10,11 +12,11 @@ const {
 
 const router = express.Router();
 
-router.post("/generate", createPayroll);
-router.get("/me/:year/:month", getMyPayrollByYearMonth);
-router.get("/me", getMyPayroll);
-router.get("/:employeeId/:year/:month", getPayrollByEmployeeYearMonth);
-router.get("/:employeeId", getPayrollByEmployee);
-router.get("/", listPayroll);
+router.post("/generate", authenticate, requireRole("HR_ADMIN"), createPayroll);
+router.get("/me/:year/:month", authenticate, requireRole("EMPLOYEE"), getMyPayrollByYearMonth);
+router.get("/me", authenticate, requireRole("EMPLOYEE"), getMyPayroll);
+router.get("/:employeeId/:year/:month", authenticate, requireRole("HR_ADMIN"), getPayrollByEmployeeYearMonth);
+router.get("/:employeeId", authenticate, requireRole("HR_ADMIN"), getPayrollByEmployee);
+router.get("/", authenticate, requireRole("HR_ADMIN"), listPayroll);
 
 module.exports = router;
