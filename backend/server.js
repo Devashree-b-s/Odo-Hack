@@ -6,6 +6,7 @@ const connectDB = require("./config/db");
 const attendanceRoutes = require("./routes/attendanceRoutes");
 const leaveRoutes = require("./routes/leaveRoutes");
 const salaryRoutes = require("./routes/salaryRoutes");
+const payrollRoutes = require("./routes/payrollRoutes");
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api/attendance", attendanceRoutes);
 app.use("/api/leave", leaveRoutes);
 app.use("/api/salary", salaryRoutes);
+app.use("/api/payroll", payrollRoutes);
 
 app.get("/api/health", (req, res) => {
     res.json({
