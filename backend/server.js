@@ -1,6 +1,8 @@
-require("dotenv").config();
-const cors = require("cors");
 const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
+
+const connectDB = require("./config/db");
 
 const app = express();
 
@@ -16,6 +18,17 @@ app.get("/api/health", (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Dayflow backend running on port ${PORT}`);
-});
+const startServer = async () => {
+    try {
+        await connectDB();
+
+        app.listen(PORT, () => {
+            console.log(`Dayflow backend running on port ${PORT}`);
+        });
+    } catch (error) {
+        console.error("Failed to start server:", error.message);
+        process.exit(1);
+    }
+};
+
+startServer();
