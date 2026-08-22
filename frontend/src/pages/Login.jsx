@@ -10,7 +10,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
     setError('')
 
@@ -19,11 +19,11 @@ export default function Login() {
       return
     }
 
-    const result = login(identifier, password)
-    if (result.success) {
+    try {
+      await login(identifier, password)
       navigate('/dashboard', { replace: true })
-    } else {
-      setError(result.message)
+    } catch (loginError) {
+      setError(loginError.message)
     }
   }
 
@@ -83,7 +83,6 @@ export default function Login() {
             <button className="sign-in-button" type="submit">Sign In <span aria-hidden="true">-&gt;</span></button>
           </form>
 
-          <p className="demo-note">Demo access: use `hr@dayflow.demo` or `employee@dayflow.demo` with `Dayflow123!`.</p>
         </div>
       </section>
     </main>
