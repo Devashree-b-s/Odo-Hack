@@ -1,0 +1,5 @@
+import LeaveStatusBadge from './LeaveStatusBadge'
+
+export default function LeaveRequestTable({ requests, showEmployee = false, onReview }) {
+  return <div className="table-scroll"><table className="leave-table"><thead><tr>{showEmployee && <th>Employee</th>}<th>Leave type</th><th>Start date</th><th>End date</th><th>Days</th><th>Reason</th><th>Status</th>{showEmployee && <th>Review</th>}</tr></thead><tbody>{requests.map((request) => <tr key={request.id}>{showEmployee && <td><strong>{request.employeeName}</strong><small>{request.employeeId}</small></td>}<td>{request.type}</td><td>{request.startDate}</td><td>{request.endDate}</td><td>{request.days}</td><td className="reason-cell">{request.reason}</td><td><LeaveStatusBadge status={request.status} /></td>{showEmployee && <td>{request.status === 'PENDING' ? <div className="review-actions"><button type="button" onClick={() => onReview(request.id, 'APPROVED')}>Approve</button><button type="button" onClick={() => onReview(request.id, 'REJECTED')}>Reject</button></div> : <small>{request.comment || 'Reviewed'}</small>}</td>}</tr>)}</tbody></table></div>
+}
