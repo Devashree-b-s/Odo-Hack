@@ -12,3 +12,8 @@ export function LoginRoute() {
   const { user } = useAuth()
   return user ? <Navigate to="/dashboard" replace /> : <Outlet />
 }
+
+export function AdminRoute() {
+  const { role } = useAuth()
+  return role === 'HR_ADMIN' ? <Outlet /> : <Navigate to="/dashboard" replace />
+}
