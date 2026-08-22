@@ -3,6 +3,7 @@ import { AdminRoute, LoginRoute, ProtectedRoute } from './components/ProtectedRo
 import { AuthProvider } from './context/AuthContext.jsx'
 import AppLayout from './components/AppLayout'
 import Dashboard from './pages/Dashboard'
+import Attendance from './pages/Attendance'
 import EmployeeDetails from './pages/EmployeeDetails'
 import Employees from './pages/Employees'
 import Login from './pages/Login'
@@ -23,7 +24,7 @@ function App() {
               <Route path="/employees" element={<Employees />} />
               <Route path="/employees/:id" element={<EmployeeDetails />} />
             </Route>
-            <Route path="/attendance" element={<ModulePlaceholder title="Attendance" description="Track working hours and attendance." />} />
+            <Route path="/attendance" element={<Attendance />} />
             <Route path="/time-off" element={<ModulePlaceholder title="Time Off" description="Review leave balances and requests." />} />
             <Route path="/profile" element={<ModulePlaceholder title="My Profile" description="Keep your personal and work details up to date." />} />
           </Route>

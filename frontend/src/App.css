@@ -118,3 +118,32 @@ input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(13,107,98,.1
 .document-placeholder small, .read-only-note small { display: block; color: var(--muted); font-size: 11px; font-weight: 400; }
 .read-only-note { display: block; color: var(--ink); line-height: 1.7; }
 @media (max-width: 650px) { .page-heading { display: block; } .employee-count { display: block; margin-top: 15px; } .employee-grid, .detail-columns { grid-template-columns: 1fr; } .profile-hero { align-items: flex-start; flex-wrap: wrap; } .profile-hero .status-badge { margin-left: 0; } .info-grid { grid-template-columns: 1fr; gap: 14px; } .profile-section { padding: 18px; } }
+.attendance-today { display: flex; justify-content: space-between; gap: 28px; margin-bottom: 16px; border: 1px solid var(--line); border-radius: 10px; padding: 26px; background: var(--navy); color: white; }
+.section-kicker { color: #a9daca; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.attendance-today h2 { margin: 12px 0 7px; font: 700 28px Manrope, sans-serif; }
+.attendance-today p { margin: 0; color: #b7d3cd; font-size: 13px; }
+.today-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.time-pair { display: grid; gap: 4px; min-width: 82px; color: #a9daca; font-size: 11px; }
+.time-pair strong { color: white; font-size: 14px; }
+.secondary-button { border: 1px solid #8fbcb0; border-radius: 7px; padding: 11px 14px; color: white; background: transparent; font-size: 12px; font-weight: 700; }
+.action-button:disabled, .secondary-button:disabled { cursor: not-allowed; opacity: .45; }
+.attendance-summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
+.attendance-summary-card { display: grid; gap: 8px; border: 1px solid var(--line); border-radius: 10px; padding: 18px; background: var(--white); }
+.attendance-summary-card span, .attendance-summary-card small { color: var(--muted); font-size: 12px; }
+.attendance-summary-card strong { color: var(--ink); font: 700 25px Manrope, sans-serif; }
+.attendance-filters { display: flex; gap: 12px; margin-bottom: 18px; }
+.attendance-filters label { display: grid; gap: 7px; color: var(--muted); font-size: 11px; }
+.attendance-filters select { min-width: 180px; border: 1px solid var(--line); border-radius: 7px; padding: 11px 12px; color: var(--ink); background: white; }
+.attendance-history { overflow: hidden; }
+.table-scroll { overflow-x: auto; }
+.attendance-table { width: 100%; min-width: 680px; border-collapse: collapse; color: var(--ink); font-size: 12px; }
+.attendance-table th { padding: 0 12px 13px; color: var(--muted); font-size: 10px; font-weight: 700; text-align: left; text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; }
+.attendance-table td { padding: 15px 12px; border-top: 1px solid var(--line); white-space: nowrap; }
+.attendance-table td strong, .attendance-table td small { display: block; }
+.attendance-table td small { margin-top: 3px; color: var(--muted); font-size: 10px; }
+.attendance-status { display: inline-block; border-radius: 20px; padding: 5px 9px; font-size: 10px; font-weight: 700; }
+.status-present { color: #217253; background: #dff3e7; }
+.status-absent { color: #9a4141; background: #fce1df; }
+.status-half_day { color: #8b681f; background: #fff0cd; }
+.status-leave { color: #6351a1; background: #ede8fa; }
+@media (max-width: 650px) { .attendance-today { display: block; padding: 20px; } .today-actions { justify-content: flex-start; margin-top: 24px; } .attendance-summary-grid { grid-template-columns: 1fr; } .attendance-filters { flex-direction: column; } .attendance-filters select { width: 100%; } }
